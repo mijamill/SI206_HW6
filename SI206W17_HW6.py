@@ -31,17 +31,20 @@ class Student():
         return this_Student.years_UM
 
     # Define the additional method here
-    
+    def write_programs(self, param = 1):
+        self.num_programs += param
 
 #### DONE WITH STUDENT CLASS DEFINITION
 
     
 print("===========")
 ## Code to show how this works...s
-pst = Student("Jay", 3, 2)
-print(pst)  # This should print: My name is Jay, and I've been at UMich for about 3 years. I got <some number 0-1000> of bonus points and I have written 2 programs while here.
-pst.shout("I'm doing awesome on this problem set.")  # This should print: I'm doing awesome on this problem set.
-
+# pst = Student("Jay", 3, 2)
+# print(pst)  # This should print: My name is Jay, and I've been at UMich for about 3 years. I got <some number 0-1000> of bonus points and I have written 2 programs while here.
+# pst.shout("I'm doing awesome on this problem set.")  # This should print: I'm doing awesome on this problem set.
+# print(pst.num_programs)
+# pst.write_programs(2)
+# print(pst)
 ## Feel free to add more testing code here to help you understand the class definition, especially to try out your write_programs method...
 
 
@@ -56,8 +59,11 @@ print("\n\n***** Problem 2 *****")
 ## The function should return the new list of accumulated -- mapped! -- values.
 ## HINT: you should be able to write this in 5 lines of code or fewer! 
 
-
-
+def personal_map(funct, list_to_change):
+    final_list = []
+    for thing in list_to_change:
+        final_list.append(funct(thing))
+    return final_list
 
 
 
@@ -74,7 +80,7 @@ def access_third_elem(seq):
 ## End
 
 # Write your equivalent function and assignment statement here
-
+sample_func = (lambda list_return:list_return[2])
 
 ## [PROBLEM 4]
 print("\n\n***** Problem 4 *****")
@@ -86,10 +92,10 @@ programs_written = [10, 500, 20, 131, 46]
 ## End provided code
 
 # Given that provided code, write one line of code to create a zip iterator instance saved in a variable called student_tups, here:
-
+student_tups = zip(names, seniority, programs_written)
 
 # Then write a line of code to cast the iterator to a list (it should end up as a list of tuples). Save that list in a variable called student_tups_list.
-
+student_tups_list = list(student_tups)
 
 ## You can test this out with any code you like here, and similar below other problems, but make sure to comment out any code that uses up the iterator in order to pass the tests!
     
@@ -167,11 +173,11 @@ print("\n\n***** Problem 10 *****")
 
 
 
-## Uncomment this code to test so you can see easily what results from your code. DO uncomment it. DO NOT delete or change it. (You can add other code above while you work, of course.)
-# provided_file_names = ["samplehw6_1.txt","samplehw6_2.txt"]
-# for ln in main_filterer(provided_file_names):
-#     print(ln.rstrip('\n'), end=" ")
-#####
+# Uncomment this code to test so you can see easily what results from your code. DO uncomment it. DO NOT delete or change it. (You can add other code above while you work, of course.)
+provided_file_names = ["samplehw6_1.txt","samplehw6_2.txt"]
+for ln in main_filterer(provided_file_names):
+    print(ln.rstrip('\n'), end=" ")
+####
 
 
 ##### TESTS BELOW THIS LINE. DO NOT CHANGE ANY CODE BELOW THIS LINE. #####
