@@ -5,7 +5,8 @@ import random
 
 ## As usual, this HW is worth 500 points in total.
 ## There are 10 problems. Each one is worth 50 points.
-
+#Name: Michael Miller
+#Worked With: Jack Coleman
 ## There are tests for each problem; you should also follow the instructions for things to do in the code that cannot be tested with unit tests, e.g. using certain structures.
 
 
@@ -147,17 +148,12 @@ names_with_not_too_much_seniority = [stud.name for stud in programmers if len(st
 
 
 
-
+ 
 ## [PROBLEM 10]
 print("\n\n***** Problem 10 *****")
 
 ## Define a function called readfiles, which accepts a list of filenames as input and yields each line in each of the file with that name, assuming those files exist in the same directory as this program.
-def readfiles(list_of_names):
-    for nam in list_of_names:
-        fileref = open(nam, 'r')
-        for eachLine in fileref:
-            yield eachLine
-        fileref.close()
+
 ## Define a generator called len_check which accepts a generator of file lines and returns a generator object of all the lines it's accepted whose length is longer than 40 characters.
 
 ## Finally, write a function called main_filterer that accepts a list of filenames (strings), and returns a generator of all the lines in those files that are longer than 40 characters. The function should invoke the other function and generator, readfiles and len_check.
@@ -170,19 +166,27 @@ def readfiles(list_of_names):
 
 # Define readfiles (make sure to close the file reference in the right place)
 
-
+def readfiles(list_of_names):
+    for nam in list_of_names:
+        fileref = open(nam, 'r')
+        for eachLine in fileref:
+            yield eachLine
+        fileref.close()
 # Define len_check
-
+def len_check(lines):
+    return (line for line in lines if len(line) > 40)
 
 # Define main_filterer
+def main_filterer(list_of_names):
+    all_lines = readfiles(list_of_names)
+    return len_check(all_lines)
 
 
-
-## Uncomment this code to test so you can see easily what results from your code. DO uncomment it. DO NOT delete or change it. (You can add other code above while you work, of course.)
-# provided_file_names = ["samplehw6_1.txt","samplehw6_2.txt"]
-# for ln in main_filterer(provided_file_names):
-#     print(ln.rstrip('\n'), end=" ")
-#####
+# Uncomment this code to test so you can see easily what results from your code. DO uncomment it. DO NOT delete or change it. (You can add other code above while you work, of course.)
+provided_file_names = ["samplehw6_1.txt","samplehw6_2.txt"]
+for ln in main_filterer(provided_file_names):
+    print(ln.rstrip('\n'), end=" ")
+####
 
 
 ##### TESTS BELOW THIS LINE. DO NOT CHANGE ANY CODE BELOW THIS LINE. #####
